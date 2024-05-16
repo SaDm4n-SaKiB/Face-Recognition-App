@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Recognized</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background-color: #FFFFFF;
+        }
+    </style>
+</head>
+<body class="bg-info text-center d-flex align-items-center justify-content-center">
+    <div class="container">
+        <img class="img-fluid mx-auto d-block" src="https://cdn.pixabay.com/photo/2021/05/04/18/17/right-6229376_1280.png" style="max-width: 200px;">
+        <h1 class="mt-4 text-white fw-bold">User Recognized</h1>
+        <p class="mt-2 text-white fs-4">Welcome back! You have been recognized.</p>
+
+        <button type="button" class="text-white text-center mt-3 btn btn-primary btn-rounded fs-5 fw-bold" onclick="redirectToHome()">Home</button>
+    </div>
+
+    <script>
+        function redirectToHome() {
+            window.location.href = '/';
+        }
+    </script>
+</body>
+</html>

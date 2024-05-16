@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Face web login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <style>
+        #video-container {
+            width: 100%;
+            max-width: 600px;
+            height: 0;
+            padding-bottom: 100%; /* To maintain a square aspect ratio */
+            overflow: hidden;
+            margin: auto;
+            position: relative;
+            border-radius: 50%; /* To create a circular shape */
+            border: 2px solid #2cfc03; /* Border color */
+            z-index: 1; /* Ensure the container is above the background */
+        }
+    
+        #video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensure video fills the container without stretching */
+            border-radius: 50%; /* To match the circular shape of the container */
+            clip-path: circle(50% at center); /* Clip the video to a circle */
+            position: absolute; /* Position the video absolutely within the container */
+            top: 0;
+            left: 0;
+            z-index: 2; /* Ensure the video is above the container */
+        }
+
+        h1{
+            font-family:"Times New Roman", Times, serif;
+        }
+    </style>
+    
+    
+    
+    
+</head>
+<body class="text-center bg-dark">
+    
+    <div class="container">
+        
+        <div class="row justify-content-center align-items-center min-vh-100">
+            <div class="col-12">
+                <h1 class="text-white fw-semibold"><strong>Face</strong> Recognizer</h1>
+            </div>
+            <div class="col-lg-4 mb-5">
+                <div id="video-container">
+                    <video id="video" autoplay></video>
+                </div>
+                <button class="btn btn-dark mt-3" onclick="capture()"><i class="fa fa-camera" style="font-size:45px;color:red"></i></button>
+                <canvas id="canvas" width="600" height="600" style="display: none;"></canvas>
+                <input for="name" type="text" id="name" required class="form-control mt-3" placeholder="Enter your name">
+                <div class="row mt-3">
+                    <div class="col">
+                        <button class="btn btn-primary btn-block w-75" onclick="register()">Register</button>
+                    </div>
+                    <!-- Alert for registration success -->
+                    <div id="registerSuccessAlert" class="alert alert-success d-none text-center alert-dismissible fade show" role="alert">
+                        <button type="button" class="btn-close" disabled aria-label="Close" onclick="closeAlert('registerSuccessAlert')"></button>
+                        <strong>Congratulations!</strong> Data successfully registered.
+                    </div>
+
+                    <!-- Alert for registration failure -->
+                    <div id="registerFailureAlert" class="alert alert-danger d-none text-center alert-dismissible fade show" role="alert">
+                        <button type="button" class="btn-close" aria-label="Close" onclick="closeAlert('registerFailureAlert')"></button>
+                        <strong>Sorry,</strong> registration failed. Please try again.
+                    </div>
+
+                    <!-- Alert for login failure -->
+                    <div id="loginFailureAlert" class="alert alert-warning d-none text-center alert-dismissible fade show" role="alert">
+                        <button type="button" class="btn-close" style="position: relative; top: -0.25rem; right: -0.25rem;" onclick="closeAlert('loginFailureAlert')"></button>
+                        <strong>Login failed.</strong> Please register your account.
+                    </div>
+                        
+                    <div class="col">
+                        <button class="btn btn-success btn-block w-75" onclick="login()">Verify</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ZyIbZzAYgIJlMzV5+JikfFceL6hC++6ZC5y5iW9X/KC0oT2VaZP5VyjzG1tRQT8j" crossorigin="anonymous"></script>
+    <script>
+        function closeAlert(alertId) {
+            var alert = document.getElementById(alertId);
+            alert.style.display = "none";
+        }
+    </script>
+</body>
+</html>
